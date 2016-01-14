@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+            <!-- jQuery mobile에서 사용하는 css, javascript. 아래 3개의 리소스를 로드해야 함 -->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+          <!-- 크롬에서 발생하는 에러해결위한 코드 (((위치는 반드시 여기에 위치 중요)))
+          Uncaught SecurityError: Failed to execute 'replaceState' on 'History': A history state object with URL  cannot be created in a document with origin 'null'. -->
+        <script>
+        $(document).bind('mobileinit',function(){
+            //$.mobile.changePage.defaults.changeHash = false;
+            $.mobile.hashListeningEnabled = false;
+            //$.mobile.pushStateEnabled = false;
+        });
+        </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+
+        <title>jquerymobile</title>
+
+    </head>
+    <body>
+        <!-- data-role는 jQuery mobile에서 해당 엘리먼트가 어떤 UI인지를 지정한다. 아래 page는 이 엘리먼트가 가장 큰 단위인 페이지임을 의미한다. -->
+        <div data-role="page">
+                <!-- 제목과 글로벌 메뉴를 표시하는 엘리먼트를 지정 -->
+            <div data-role="header" data-theme="b">
+                <h1>My Title</h1>
+            </div><!-- /header -->
+                <!-- 컨텐츠가 표시되는 영역을 지정 -->
+            <div data-role="content">
+              <p>Hello world 부자되세요~~~</p>
+                <ul data-role="listview" data-inset="true" data-filter="true">
+                  <li><a href="#">Acura</a></li>
+                  <li><a href="#">Audi</a></li>
+                  <li><a href="#">BMW</a></li>
+                  <li><a href="#">Cadillac</a></li>
+                  <li><a href="#">Ferrari</a></li>
+              </ul>
+              <a href="#" data-role="button" data-icon="star">Star button</a>
+              <form>
+                 <label for="slider-0">Input slider:</label>
+                 <input type="range" name="slider" id="slider-0" value="25" min="0" max="100"  />
+              </form>
+            </div><!-- /content -->
+
+        </div><!-- /page -->
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
